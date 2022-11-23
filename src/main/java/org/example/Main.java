@@ -13,13 +13,14 @@ public class Main {
 
         int option;
 
-        System.out.println("****** Seleccion Colombia ******");
+        System.out.println("************ Seleccion Colombia ************");
 
         do {
             System.out.println("****** DIGITE UNA OPCION ******");
+            System.out.println("Cantidad de jugadores ingresado en la selección: " + jugadores.size());
             System.out.println("1. AGREGAR UN JUGADOR A LA SELECCION COLOMBIA ");
             System.out.println("2. BUSCAR UN JUGADOR DE LA SELECCION COLOMBIA ");
-            System.out.println("3. EDITAR JUGDOR DE LA SELECCION COLOMBIA ");
+            System.out.println("3. EDITAR JUGADOR DE LA SELECCION COLOMBIA ");
             System.out.println("4. MOSTRAR A LOS JUGADORES CONVOCADOS ");
             System.out.println("5. CERRAR PROGRAMA ");
             option = entradaDatos.nextInt();
@@ -27,7 +28,7 @@ public class Main {
             switch (option){
                 case 1:
 
-                    if(jugadores.size() <= 23){
+                    if(jugadores.size() < 23){
 
                         Jugador objetoJugador = new Jugador();
                         System.out.println("Ingrese el numero del jugador");
@@ -48,14 +49,14 @@ public class Main {
                         }else{
                             objetoJugador.setNumeroCamiseta(numeroJugador);
                             System.out.print("Ingrese el nombre del jugador: ");
-                            objetoJugador.setNombres(entradaDatos.next());
-                            System.out.print("Ingrese los apellidos del jugador: ");
-                            objetoJugador.setApellidos(entradaDatos.next());
+                            objetoJugador.setNombre(entradaDatos.next());
+                            System.out.print("Ingrese los apellido del jugador: ");
+                            objetoJugador.setApellido(entradaDatos.next());
                             System.out.print("Ingrese la posición del jugador : ");
                             objetoJugador.setPosicion(entradaDatos.next());
                             System.out.print("Ingrese la edad del jugador: ");
                             objetoJugador.setEdad(entradaDatos.nextInt());
-                            System.out.println("Ingrese el equipo de donde viene el jugador: ");
+                            System.out.print("Ingrese el equipo de donde viene el jugador: ");
                             objetoJugador.setEquipoJugador(entradaDatos.next());
 
                             jugadores.add(objetoJugador);
@@ -74,8 +75,8 @@ public class Main {
                     for (Jugador jugador:jugadores) {
                         if(jugador.getNumeroCamiseta() == buscarJugador){
                             System.out.println("El numero del jugador es: " + jugador.getNumeroCamiseta());
-                            System.out.println("El nombre del jugador es: " + jugador.getNombres());
-                            System.out.println("El apellido del jugador es: " + jugador.getApellidos());
+                            System.out.println("El nombre del jugador es: " + jugador.getNombre());
+                            System.out.println("El apellido del jugador es: " + jugador.getApellido());
                             System.out.println("La posicion del jugador es: " + jugador.getPosicion());
                             System.out.println("La edad del jugador es: " + jugador.getEdad());
                             System.out.println("El equipo donde juega es: " + jugador.getEquipoJugador());
@@ -119,7 +120,7 @@ public class Main {
                                 switch (optionEditar){
                                     case 1:
                                         int nuevoNumeroCamisete;
-                                        System.out.println("Ingrese el nuevo numero de la camiseta del" +
+                                        System.out.print("Ingrese el nuevo numero de la camiseta del" +
                                                 " jugador: ");
                                         nuevoNumeroCamisete = entradaDatos.nextInt();
                                         for (Jugador verificarJugador: jugadores) {
@@ -132,19 +133,17 @@ public class Main {
                                         }
                                         break;
                                     case 2:
-                                        System.out.print("Ingrese el nuevo nombre del jugador");
-                                        jugador.setNombres(entradaDatos.next());
+                                        System.out.println("Ingrese el nuevo nombre del jugador: ");
+                                        jugador.setNombre(entradaDatos.next());
                                         break;
                                     case 3:
                                         System.out.print("Ingrese el nuevo apellido del jugador");
-                                        String nuevoApellido = entradaDatos.next();
-                                        jugador.setApellidos(nuevoApellido);
+                                        jugador.setApellido(entradaDatos.next());
                                         break;
 
                                     case 4:
                                         System.out.print("Ingrese la nueva posición del jugador");
-                                        String nuevaPosicion = entradaDatos.next();
-                                        jugador.setPosicion(nuevaPosicion);
+                                        jugador.setPosicion(entradaDatos.next());
                                         break;
 
                                     case 5:
@@ -154,9 +153,8 @@ public class Main {
                                         break;
 
                                     case 6:
-                                        System.out.print("Ingrese el nuevo equipo del jugador");
-                                        String nuevoEquipo = entradaDatos.next();
-                                        jugador.setEquipoJugador(nuevoEquipo);
+                                        System.out.print("Ingrese el nuevo equipo del jugador: ");
+                                        jugador.setEquipoJugador(entradaDatos.next());
                                         break;
 
                                     case 7:
@@ -176,14 +174,16 @@ public class Main {
                         }
 
                     }
+                break;
 
                 case 4:
                     System.out.println("Lista de jugadores");
                     for (Jugador jugador: jugadores) {
-                        System.out.println("****** jugador *****");
+
+                        System.out.println("**************** jugador ****************");
                         System.out.println("El numero: " + jugador.getNumeroCamiseta());
-                        System.out.println("El nombre del jugador es: " + jugador.getNombres());
-                        System.out.println("El apellido del jugador es: " + jugador.getApellidos());
+                        System.out.println("El nombre del jugador es: " + jugador.getNombre());
+                        System.out.println("El apellido del jugador es: " + jugador.getApellido());
                         System.out.println("La posición del jugador es: "+ jugador.getPosicion());
                         System.out.println("La edad del jugador es: " + jugador.getEdad());
                         System.out.println("El equipo del jugador es: " + jugador.getEquipoJugador());
@@ -191,17 +191,15 @@ public class Main {
                     }
                     break;
 
+                case 5:
+                    System.out.println("******** Programa cerrado **********");
+                    break;
+
                 default:
                     System.out.println("Opcion no valida");
             }
 
-
         }while (option !=5);
-
-
-
-
-
 
     }//fin clase main
 }
